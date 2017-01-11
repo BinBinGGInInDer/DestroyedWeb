@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="app.css">
 <style>
-    body{background-image:url("back.jpg");
+    body{background-image:url("/pic/back.jpg");
     background-repeat:no-repeat;
     background-size:100% auto;
     background-position: 50% 20%;
@@ -46,13 +46,13 @@ img:hover{
 </div>
 <div id="lower" class="w3-content">
 <div>
-<img id="BRANDED" onclick="chose(this)" src="36f98e4dc41dd597ba97696415bedaca.png">
-<img id="ITSNOT" onclick="chose(this)" src="free-stamp-png-1.png">
-<img id="APPROVED" onclick="chose(this)" src="red-approved-stamp-clip-art-at-clker-com-vector-clip-art-online-TtMImT-clipart.png" >
-<img id="URGENT" onclick="chose(this)" src="urgent-rubber-stamp-totally-uncorked-on-marketing-mZzydr-clipart.png">
-<img id="HILLARY" onclick="chose(this)" src="hillary.png" >
-<img id="TRUMP" onclick="chose(this)" src="trump.png">
-<img id="ANT" onclick="chose(this)" src="ant.png">
+<img id="BRANDED" onclick="chose(this)" src="/pic/36f98e4dc41dd597ba97696415bedaca.png">
+<img id="ITSNOT" onclick="chose(this)" src="/pic/free-stamp-png-1.png">
+<img id="APPROVED" onclick="chose(this)" src="/pic/red-approved-stamp-clip-art-at-clker-com-vector-clip-art-online-TtMImT-clipart.png" >
+<img id="URGENT" onclick="chose(this)" src="/pic/urgent-rubber-stamp-totally-uncorked-on-marketing-mZzydr-clipart.png">
+<img id="HILLARY" onclick="chose(this)" src="/pic/hillary.png" >
+<img id="TRUMP" onclick="chose(this)" src="/pic/trump.png">
+<img id="ANT" onclick="chose(this)" src="/pic/ant.png">
     </div>
 <div><canvas onclick="getcoords(event)"  id="myCanvas" width = "0" height = "0" style=" border:1px solid #d3d3d3;">
 Your browser does not support the HTML5 canvas tag.
@@ -85,20 +85,20 @@ function play(){
        t = parseInt(t);
 	   t = t%4;
        var audio = document.createElement("audio");
-	   if(id=="ITSNOT"||id=="APPROVED"||id=="URGENT"||id=="BRANDED"){audio.src ="stm.mp3" ;}
-	   else if(id=="ANT"){audio.src ="kc.mp3" ;}
-	   else if(id=="TRUMP"){audio.src ="man.mp3" ;}
-	   else if(id=="HILLARY"){audio.src ="woman.mp3" ;}
+	   if(id=="ITSNOT"||id=="APPROVED"||id=="URGENT"||id=="BRANDED"){audio.src ="/sound/stm.mp3" ;}
+	   else if(id=="ANT"){audio.src ="/sound/kc.mp3" ;}
+	   else if(id=="TRUMP"){audio.src ="/sound/man.mp3" ;}
+	   else if(id=="HILLARY"){audio.src ="/sound/woman.mp3" ;}
 	   //隞乩??箸憓?	   else if(id==""){audio.src ="stick.mp3" ;}//??
-	   else if(id==""){audio.src ="gun.mp3" ;}//??
-	   else if(id==""){audio.src ="lazergun.mp3" ;}//?瑕?瑽?	   else if(id==""){audio.src ="lightsaber.mp3" ;}//??
+	   else if(id==""){audio.src ="/sound/gun.mp3" ;}//??
+	   else if(id==""){audio.src ="/sound/lazergun.mp3" ;}//?瑕?瑽?	   else if(id==""){audio.src ="lightsaber.mp3" ;}//??
 	  
 	  //鈭
 	   else{
-	     if(t==0){audio.src ="else1.mp3" ;}
-	     else if(t==1){audio.src ="else2.mp3" ;}
-		 else if(t==2){audio.src ="else3.mp3" ;}
-		 else {audio.src ="else4.mp3" ;}
+	     if(t==0){audio.src ="/sound/else1.mp3" ;}
+	     else if(t==1){audio.src ="/sound/else2.mp3" ;}
+		 else if(t==2){audio.src ="/sound/else3.mp3" ;}
+		 else {audio.src ="/sound/else4.mp3" ;}
 	       }
        audio.play();
                  }
