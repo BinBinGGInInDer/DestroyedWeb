@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="app.css">
 <style>
-    body{background-image:url("/pic/back.jpg");
+    body{background-image:url("back.jpg");
     background-repeat:no-repeat;
     background-size:100% auto;
     background-position: 50% 20%;
@@ -46,13 +46,13 @@ img:hover{
 </div>
 <div id="lower" class="w3-content">
 <div>
-<img id="BRANDED" onclick="chose(this)" src="/pic/36f98e4dc41dd597ba97696415bedaca.png">
-<img id="ITSNOT" onclick="chose(this)" src="/pic/free-stamp-png-1.png">
-<img id="APPROVED" onclick="chose(this)" src="/pic/red-approved-stamp-clip-art-at-clker-com-vector-clip-art-online-TtMImT-clipart.png" >
-<img id="URGENT" onclick="chose(this)" src="/pic/urgent-rubber-stamp-totally-uncorked-on-marketing-mZzydr-clipart.png">
-<img id="HILLARY" onclick="chose(this)" src="/pic/hillary.png" >
-<img id="TRUMP" onclick="chose(this)" src="/pic/trump.png">
-<img id="ANT" onclick="chose(this)" src="/pic/ant.png">
+<img id="BRANDED" onclick="chose(this)" src="36f98e4dc41dd597ba97696415bedaca.png">
+<img id="ITSNOT" onclick="chose(this)" src="free-stamp-png-1.png">
+<img id="APPROVED" onclick="chose(this)" src="red-approved-stamp-clip-art-at-clker-com-vector-clip-art-online-TtMImT-clipart.png" >
+<img id="URGENT" onclick="chose(this)" src="urgent-rubber-stamp-totally-uncorked-on-marketing-mZzydr-clipart.png">
+<img id="HILLARY" onclick="chose(this)" src="hillary.png" >
+<img id="TRUMP" onclick="chose(this)" src="trump.png">
+<img id="ANT" onclick="chose(this)" src="ant.png">
     </div>
 <div><canvas onclick="getcoords(event)"  id="myCanvas" width = "0" height = "0" style=" border:1px solid #d3d3d3;">
 Your browser does not support the HTML5 canvas tag.
@@ -89,13 +89,11 @@ function play(){
 	   else if(id=="ANT"){audio.src ="kc.mp3" ;}
 	   else if(id=="TRUMP"){audio.src ="man.mp3" ;}
 	   else if(id=="HILLARY"){audio.src ="woman.mp3" ;}
-	   //以下為新增
-	   else if(id==""){audio.src ="stick.mp3" ;}//球棒
-	   else if(id==""){audio.src ="gun.mp3" ;}//手槍
-	   else if(id==""){audio.src ="lazergun.mp3" ;}//雷射槍
-	   else if(id==""){audio.src ="lightsaber.mp3" ;}//光劍
+	   //隞乩??箸憓?	   else if(id==""){audio.src ="stick.mp3" ;}//??
+	   else if(id==""){audio.src ="gun.mp3" ;}//??
+	   else if(id==""){audio.src ="lazergun.mp3" ;}//?瑕?瑽?	   else if(id==""){audio.src ="lightsaber.mp3" ;}//??
 	  
-	  //亂數
+	  //鈭
 	   else{
 	     if(t==0){audio.src ="else1.mp3" ;}
 	     else if(t==1){audio.src ="else2.mp3" ;}
@@ -107,7 +105,7 @@ function play(){
 		
 function addstamp(){
     var img1 = document.createElement("img");
-    img1.crossOrigin = 'Anonymous';//改變權限
+    img1.crossOrigin = 'Anonymous';//?寡?甈?
     img1.src = document.getElementsByName("stamp")[0].value;
     img1.id = count;
     document.body.appendChild(img1);
@@ -116,7 +114,7 @@ function addstamp(){
 }
 function submit(){
     background.src = document.getElementsByName("fname")[0].value;
-    background.crossOrigin = 'Anonymous';//改變權限
+    background.crossOrigin = 'Anonymous';//?寡?甈?
     document.getElementById('myCanvas').height = background.height;
     document.getElementById('myCanvas').width = background.width;
     ctx.drawImage(background, 0, 0);
@@ -126,22 +124,13 @@ id = elmnt.id
 img = document.getElementById(id);
 h=img.clientHeight;
 w=img.clientWidth;
-switch(id)
-	case "BRANDED":
-	case "ITSNOT":
-	case "APPROVED":
-	case "URGENT":
-		$('canvas').css({
-    		'cursor': 'url(/pic/rectangle-stamp-heavy_grande.gif), 64 120, auto;'});
-		$('canvas':'active').css({'cursor':'url(rectangle-stamp-heavy_grande.gif) 64 90,auto;'});
-		break;
-	case "TRUMP":
-	case "HILLARY":
-	case "ANT":
-		$('canvas').css({
+if(id=="ITSNOT"||id=="APPROVED"||id=="URGENT"||id=="BRANDED"){
+		document.getElementById('myCanvas').css({
+    		'cursor': 'url(rectangle-stamp-heavy_grande.gif), 64 120, auto;'});}
+else{
+		document.getElementById('myCanvas').css({
     		'cursor': 'default;'});
-		break;
-		}
+		}}
 
 function getcoords(event){
 play();
@@ -233,7 +222,7 @@ function ant(element){
 }
 
 
-//用js宣告一個超連結
+//?甫s摰??銝?????
 var link = document.createElement('a');
 link.innerHTML = 'download image';
 link.addEventListener('click', function(ev) {
