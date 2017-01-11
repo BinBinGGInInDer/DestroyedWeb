@@ -60,6 +60,9 @@ Your browser does not support the HTML5 canvas tag.
     </canvas></div></div>
 <div><p id="demo"></p></div>
 <script>
+
+
+
 var a;
 var b;
 var c = document.getElementById("myCanvas");
@@ -126,10 +129,12 @@ img = document.getElementById(id);
 h=img.clientHeight;
 w=img.clientWidth;
 if(id=="ITSNOT"||id=="APPROVED"||id=="URGENT"||id=="BRANDED"){
-		  $('canvas').css(
-    		'cursor' 'url("/pic/rectangle-stamp-heavy_grande.gif")' );}
+
+      $('canvas').css({
+    		'cursor':'url(/pic/rectangle-stamp-heavy_grande.gif), 64 120, auto;'});}
+
 else{
-		document.getElementById('myCanvas').css({
+		$('canvas').css({
     		'cursor': 'default;'});
 		}}
 
