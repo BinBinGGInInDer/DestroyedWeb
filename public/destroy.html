@@ -74,7 +74,37 @@ var v=0;
 
 var background = new Image();
 var count=0;
-
+function play(){
+       var t = Math.random();
+	   selmu = t % 4 ;
+	   var t = Math.random();
+       t=t*839;
+       t=t%8;
+       t*13;
+       t=t%8;
+       t = parseInt(t);
+	   t = t%4;
+       var audio = document.createElement("audio");
+	   if(id=="ITSNOT"||id=="APPROVED"||id=="URGENT"||id=="BRANDED"){audio.src ="stm.mp3" ;}
+	   else if(id=="ANT"){audio.src ="kc.mp3" ;}
+	   else if(id=="TRUMP"){audio.src ="man.mp3" ;}
+	   else if(id=="HILLARY"){audio.src ="woman.mp3" ;}
+	   //以下為新增
+	   else if(id==""){audio.src ="stick.mp3" ;}//球棒
+	   else if(id==""){audio.src ="gun.mp3" ;}//手槍
+	   else if(id==""){audio.src ="lazergun.mp3" ;}//雷射槍
+	   else if(id==""){audio.src ="lightsaber.mp3" ;}//光劍
+	  
+	  //亂數
+	   else{
+	     if(t==0){audio.src ="else1.mp3" ;}
+	     else if(t==1){audio.src ="else2.mp3" ;}
+		 else if(t==2){audio.src ="else3.mp3" ;}
+		 else {audio.src ="else4.mp3" ;}
+	       }
+       audio.play();
+                 }
+		
 function addstamp(){
     var img1 = document.createElement("img");
     img1.crossOrigin = 'Anonymous';//改變權限
@@ -100,6 +130,7 @@ w=img.clientWidth;
 }
 
 function getcoords(event){
+play();
 var h=img.clientHeight;
 var w=img.clientWidth;
 if(id=="ANT"){w=10;h=10;}
