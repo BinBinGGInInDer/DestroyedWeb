@@ -30,6 +30,7 @@ img:hover{
     padding-bottom:5px;}
     #lower{padding-top:5px;}
 </style>
+<body onmousemove="myFunction(event)">
     <div class="w3-content">
   <ul class="w3-navbar w3-white w3-wide w3-padding-8 w3-card-2">
     <li>
@@ -48,14 +49,14 @@ img:hover{
 <div>
 <img id="BRANDED" onclick="chose(this)" src="/pic/36f98e4dc41dd597ba97696415bedaca.png">
 <img id="ITSNOT" onclick="chose(this)" src="/pic/free-stamp-png-1.png">
-<img id="APPROVED" onclick="chose(this)" src="/pic/red-approved-stamp-clip-art-at-clker-com-vector-clip-art-online-TtMImT-clipart.png" >
+<!--<img id="APPROVED" onclick="chose(this)" src="red-approved-stamp-clip-art-at-clker-com-vector-clip-art-online-TtMImT-clipart.png" >-->
 <img id="URGENT" onclick="chose(this)" src="/pic/urgent-rubber-stamp-totally-uncorked-on-marketing-mZzydr-clipart.png">
 <img id="HILLARY" onclick="chose(this)" src="/pic/hillary.png" >
 <img id="TRUMP" onclick="chose(this)" src="/pic/trump.png">
 <img id="ANT" onclick="chose(this)" src="/pic/ant.png">
 <img id="BULLET" onclick="chose(this)" src="/pic/bullet.png">
     </div>
-<div><canvas onclick="getcoords(event)"  id="myCanvas" width = "0" height = "0" style=" border:1px solid #d3d3d3;">
+<div><canvas id="myCanvas" width = "0" height = "0" style=" border:1px solid #d3d3d3;">
 Your browser does not support the HTML5 canvas tag.
     </canvas></div></div>
 <div><p id="demo"></p></div>
@@ -74,10 +75,17 @@ var X=canvasPosition.left;
 var Y=canvasPosition.top;
 var x;
 var y;
+var movex;
+var movey;
 var v=0;
-
+var mouseStillDown=false;
 var background = new Image();
 var count=0;
+var  mouse=false;
+function myFunction(e) {
+    movex = e.clientX;
+    movey = e.clientY;
+    }
 function play(){
        var t = Math.random();
 	   selmu = t % 4 ;
@@ -129,22 +137,31 @@ img = document.getElementById(id);
 h=img.clientHeight;
 w=img.clientWidth;
 if(id=="ITSNOT"||id=="APPROVED"||id=="URGENT"||id=="BRANDED"){
+<<<<<<< HEAD
 
       $('canvas').css({
     		'cursor':'url(/pic/rectangle-stamp-heavy_grande.gif), 64 120, auto;'});}
 
+=======
+		$('canvas').css({
+    		'cursor': 'url(rectangle-stamp-heavy_grande.gif), 64 120, auto;'});}
+>>>>>>> 439120833687edf81b7fff04469c2313a24771c5
 else{
 		$('canvas').css({
     		'cursor': 'default;'});
-		}}
+		}
 
-function getcoords(event){
+}
+$('canvas').mousedown(function(){mouse=true; getcoords();});
+$('canvas').mouseup(function(){mouse=false;});
+function getcoords(){
+if(!mouse){return;}
 play();
 var h=img.clientHeight;
 var w=img.clientWidth;
 if(id=="ANT"){w=10;h=10;}
-var x=(event.clientX-X+$(document).scrollLeft())-w/2;
-var y=(event.clientY-Y+$(document).scrollTop())-h/2;
+var x=(movex-X+$(document).scrollLeft())-w/2;
+var y=(movey-Y+$(document).scrollTop())-h/2;
 ctx.drawImage(img,x,y,w,h);
 if(id=="ANT"){
 setInterval(function(){
@@ -220,8 +237,8 @@ ctx.putImageData(imgData, x, y);
         
         
     },10);}
+if(mouse){setInterval(function(){getcoords();},100);}
 }
-
 
 //?甫s摰??銝?????
 var link = document.createElement('a');
