@@ -141,7 +141,7 @@ function start(){
 		
 function addstamp(){
     var img1 = document.createElement("img");
-    //img1.crossOrigin = 'Anonymous';//?寡?甈?
+    img1.crossOrigin = 'Anonymous';//?寡?甈?
     img1.src = document.getElementsByName("stamp")[0].value;
     img1.id = count;
     document.body.appendChild(img1);
@@ -150,7 +150,7 @@ function addstamp(){
 }
 function submit(){
     background.src = document.getElementsByName("fname")[0].value;
-    //background.crossOrigin = 'Anonymous';//?寡?甈?
+    background.crossOrigin = 'Anonymous';//?寡?甈?
     document.getElementById('myCanvas').height = background.height;
     document.getElementById('myCanvas').width = background.width;
     ctx.drawImage(background, 0, 0);
@@ -257,7 +257,6 @@ ctx.putImageData(imgData, x, y);
 if(mouse){setInterval(function(){getcoords();},300);}
 }
 
-//?甫s摰??銝?????
 
 
 
