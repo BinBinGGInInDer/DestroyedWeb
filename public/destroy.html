@@ -47,20 +47,42 @@ img:hover{
 </div>
 <div id="lower" class="w3-content">
 <div>
-<img id="BRANDED" onclick="chose(this)" src="/pic/36f98e4dc41dd597ba97696415bedaca.png">
-<img id="ITSNOT" onclick="chose(this)" src="/pic/free-stamp-png-1.png">
+<img class="stamp" id="BRANDED" onclick="stap(this)" src="/pic/36f98e4dc41dd597ba97696415bedaca.png">
+<img class="stamp"id="ITSNOT" onclick="stap(this)" src="/pic/free-stamp-png-1.png">
 <!--<img id="APPROVED" onclick="chose(this)" src="red-approved-stamp-clip-art-at-clker-com-vector-clip-art-online-TtMImT-clipart.png" >-->
-<img id="URGENT" onclick="chose(this)" src="/pic/urgent-rubber-stamp-totally-uncorked-on-marketing-mZzydr-clipart.png">
-<img id="HILLARY" onclick="chose(this)" src="/pic/hillary.png" >
-<img id="TRUMP" onclick="chose(this)" src="/pic/trump.png">
-<img id="ANT" onclick="chose(this)" src="/pic/ant.png">
-<img id="BULLET" onclick="chose(this)" src="/pic/bullet.png">
+<img id="URGENT" onclick="stap(this)" src="/pic/urgent-rubber-stamp-totally-uncorked-on-marketing-mZzydr-clipart.png">
+<img id="HILLARY" onclick="stap(this)" src="/pic/hillary.png" >
+<img id="TRUMP" onclick="stap(this)" src="/pic/trump.png">
+<img id="ANT" onclick="hap(this)" src="/pic/ant.png">
+<img id="BULLET" onclick="shoo(this)" src="/pic/bullet.png">
     </div>
 <div><canvas id="myCanvas" width = "0" height = "0" style=" border:1px solid #d3d3d3;">
 Your browser does not support the HTML5 canvas tag.
     </canvas></div></div>
 <div><p id="demo"></p></div>
 <script>
+
+function stap(SS){
+  $('canvas').css(        
+      'cursor','url(/pic/rectangle-stamp-heavy_grande.gif) 64 90  ,default'
+      );
+  chose(SS);
+}
+
+function shoo(SS){
+  $('canvas').css(
+        'cursor','url(/pic/GUN.gif) -30 0 ,default'
+              );
+                chose(SS);
+                }
+
+function hap(SS){
+  $('canvas').css(
+        'cursor','url(/pic/hand.gif)  ,default'
+              );
+              chose(SS);
+                }
+
 
 
 
@@ -81,12 +103,14 @@ var v=0;
 var mouseStillDown=false;
 var background = new Image();
 var count=0;
+      var audio = document.createElement("audio");
 var  mouse=false;
 function myFunction(e) {
+      
     movex = e.clientX;
     movey = e.clientY;
     }
-function play(){
+function start(){
        var t = Math.random();
 	   selmu = t % 4 ;
 	   var t = Math.random();
@@ -96,13 +120,13 @@ function play(){
        t=t%8;
        t = parseInt(t);
 	   t = t%4;
-       var audio = document.createElement("audio");
-	   if(id=="ITSNOT"||id=="APPROVED"||id=="URGENT"||id=="BRANDED"){audio.src ="/sound/stm.mp3" ;}
+      audio.loop=true;
+      	   if(id=="ITSNOT"||id=="APPROVED"||id=="URGENT"||id=="BRANDED"){audio.src ="/sound/stm.mp3" ;}
 	   else if(id=="ANT"){audio.src ="/sound/kc.mp3" ;}
 	   else if(id=="TRUMP"){audio.src ="/sound/man.mp3" ;}
 	   else if(id=="HILLARY"){audio.src ="/sound/woman.mp3" ;}
 	   //隞乩??箸憓?	   else if(id==""){audio.src ="stick.mp3" ;}//??
-	   else if(id=="BULLET"){audio.src ="/sound/gun.mp3" ;}//??
+	   else if(id=="BULLET"){audio.src ="/sound/gun2.mp3" ;}//??
 	   else if(id==""){audio.src ="/sound/lazergun.mp3" ;}//?瑕?瑽?	   else if(id==""){audio.src ="lightsaber.mp3" ;}//??
 	  
 	  //鈭
@@ -117,7 +141,7 @@ function play(){
 		
 function addstamp(){
     var img1 = document.createElement("img");
-    img1.crossOrigin = 'Anonymous';//?寡?甈?
+    //img1.crossOrigin = 'Anonymous';//?寡?甈?
     img1.src = document.getElementsByName("stamp")[0].value;
     img1.id = count;
     document.body.appendChild(img1);
@@ -126,7 +150,7 @@ function addstamp(){
 }
 function submit(){
     background.src = document.getElementsByName("fname")[0].value;
-    background.crossOrigin = 'Anonymous';//?寡?甈?
+    //background.crossOrigin = 'Anonymous';//?寡?甈?
     document.getElementById('myCanvas').height = background.height;
     document.getElementById('myCanvas').width = background.width;
     ctx.drawImage(background, 0, 0);
@@ -136,27 +160,20 @@ id = elmnt.id
 img = document.getElementById(id);
 h=img.clientHeight;
 w=img.clientWidth;
-if(id=="ITSNOT"||id=="APPROVED"||id=="URGENT"||id=="BRANDED"){
-<<<<<<< HEAD
+/*if(id=="ITSNOT"||id=="APPROVED"||id=="URGENT"||id=="BRANDED"){
 
       $('canvas').css({
     		'cursor':'url(/pic/rectangle-stamp-heavy_grande.gif), 64 120, auto;'});}
-
-=======
-		$('canvas').css({
-    		'cursor': 'url(rectangle-stamp-heavy_grande.gif), 64 120, auto;'});}
->>>>>>> 439120833687edf81b7fff04469c2313a24771c5
 else{
 		$('canvas').css({
     		'cursor': 'default;'});
-		}
+		}*/
 
 }
-$('canvas').mousedown(function(){mouse=true; getcoords();});
-$('canvas').mouseup(function(){mouse=false;});
+$('canvas').mousedown(function(){mouse=true; getcoords();start();});
+$('canvas').mouseup(function(){mouse=false;audio.loop=false});
 function getcoords(){
 if(!mouse){return;}
-play();
 var h=img.clientHeight;
 var w=img.clientWidth;
 if(id=="ANT"){w=10;h=10;}
@@ -237,17 +254,10 @@ ctx.putImageData(imgData, x, y);
         
         
     },10);}
-if(mouse){setInterval(function(){getcoords();},100);}
+if(mouse){setInterval(function(){getcoords();},300);}
 }
 
 //?甫s摰??銝?????
-var link = document.createElement('a');
-link.innerHTML = 'download image';
-link.addEventListener('click', function(ev) {
-link.href = canvas.toDataURL();
-link.download = "mypainting.png";
-}, false);
-document.body.appendChild(link);
 
 
 
